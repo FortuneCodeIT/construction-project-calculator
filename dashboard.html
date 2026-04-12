@@ -10,7 +10,7 @@
      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100 flex">
-    <aside class="bg-gray-900 text-white h-screen max-w-md p-6 md:flex md:flex-col justify-between fixed top-0 left-0 aside sm:hidden ">
+    <aside class="bg-gray-900 text-white h-screen sm:w-2/6 md:w-1/5 p-6 md:flex md:flex-col justify-between fixed top-0 left-0 aside  hidden " id="sideNav">
         <div>
         <h2 class="text-2xl font-bold  mb-6">Cost Dashboard</h2>
         <nav>
@@ -23,26 +23,27 @@
         </nav>
         </div>
 
-        <div class="px-6 py-4 bg-gray-800 rounded-lg flex items-center space-x-1">
+        <div class="px-6 py-4 bg-gray-800 rounded-lg flex items-center space-x-1 flex-wrap  w-full">
 
-            <div class="flex items-center space-x-1">
+            <div class="flex items-center space-x-1 ">
             <img src="img/setting.png" alt="" class="w-6 h-6">
             <a href="" class="pr-1">setting</a> 
             </div> /
 
-            <div class="flex items-center space-x-1">
+            <div class="flex items-center space-x-1 ">
             <img src="img/profile.png" alt="" class="w-5 h-5">
             <a href="">Profile</a>
             </div>
         </div>
     </aside>
 
-    <main class="flex-1 p-6 md:ml-64 sm:ml-0 main relative">
-        <header class="flex items-center justify-between sticky top-0 bg-white px-6 py-4 shadow-md z-10 rounded-lg ">
-        
-             <button class="bg-orange-600 px-4 py-2 rounded-lg hover:bg-orange-700 transform hover:scale-105 transition text-white text-sm" id="btn-modal">
+    <main class=" p-6 w-full md:w-4/5  right-0 main absolute" id="main-width">
+        <header class="flex items-center justify-between sticky top-0 bg-white px-6 py-4 shadow-md z-10 rounded-lg ">  
+
+                <button class="bg-orange-600 px-4 py-2 rounded-lg hover:bg-orange-700 transform hover:scale-105 transition text-white text-sm" id="btn-modal">
                     Add Expenses
                 </button>
+
 
                   <h1 class="text-2xl font-bold">Dashboard</h1>
 
@@ -50,6 +51,10 @@
             <div class="flex items-center space-x-2">
                 <p><a href="/notifications" class="text-blue-700 hover:underline font-semibold">Notification</a></p>
                 <img src="img/profile.png" alt="" class="w-6 h-6 cursor-pointer">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="openSideNav" style="cursor: pointer;" class="md:hidden">
+                <path fill="none" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14" />
+                </svg>
             </div>
         </header>
 
@@ -187,111 +192,12 @@
                             </tr>
                         </thead>
                         <tbody id="activityTable">
-                            <!-- <tr>
-                                <td class="border-b py-2">2024-06-01</td>
-                                <td class="border-b py-2">Cement Purchase</td>
-                                <td class="border-b py-2">Materials</td>
-                                <td class="border-b py-2">$500</td>
-                                <td class="border-b py-2">Pending</td>
-                            </tr>
-                            <tr>
-                                <td class="border-b py-2">2024-06-02</td>
-                                <td class="border-b py-2">Labor Payment</td>
-                                <td class="border-b py-2">Labor</td>
-                                <td class="border-b py-2">$1,000</td>
-                                <td class="border-b py-2">Approved</td>
-                            </tr>
-                            <tr>
-                                <td class="border-b py-2">2024-06-03</td>
-                                <td class="border-b py-2">Equipment Rental</td>
-                                <td class="border-b py-2">Equipment</td>
-                                <td class="border-b py-2">$300</td>
-                                <td class="border-b py-2">Rejected</td>
-                            </tr>
-                            <tr>
-                                <td class="border-b py-2">2024-06-04</td>
-                                <td class="border-b py-2">Paint Purchase</td>
-                                <td class="border-b py-2">Materials</td>
-                                <td class="border-b py-2">$200</td>
-                                <td class="border-b py-2">Pending</td>
-                            </tr>
-                            <tr>
-                                <td class="border-b py-2">2024-06-05</td>
-                                <td class="border-b py-2">Plumbing Work</td>
-                                <td class="border-b py-2">Labor</td>
-                                <td class="border-b py-2">$800</td>
-                                <td class="border-b py-2">Approved</td>
-                        </tr> -->
+                          
                         </tbody>
                     </table>
                 </div>
                 </div>
             </section>
-
-            <!-- <div class="p-6">
-  <div class="bg-white p-6 rounded-lg shadow">
-
-    <h2 class="text-lg font-semibold mb-4">
-      Budget vs Actual Cost
-    </h2>
-
-    <div class="space-y-4">
-
- 
-      <div>
-        <div class="flex justify-between text-sm mb-1">
-          <span>Road Construction</span>
-          <span>₦6,000,000 / ₦10,000,000</span>
-        </div>
-
-        <div class="w-full bg-gray-200 rounded-full h-3">
-          <div class="bg-blue-600 h-3 rounded-full w-3/5"></div>
-        </div>
-      </div>
-
-  
-      <div>
-        <div class="flex justify-between text-sm mb-1">
-          <span>Bridge Project</span>
-          <span>₦12,000,000 / ₦15,000,000</span>
-        </div>
-
-        <div class="w-full bg-gray-200 rounded-full h-3">
-          <div class="bg-green-600 h-3 rounded-full w-3/4"></div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</div> -->
-
-            <!-- <div class="p-6 bg-white rounded-lg shadow">
-
-  <h2 class="text-lg font-semibold mb-4">
-    Project Progress
-  </h2>
-
-  <div class="space-y-4">
-
-    <div>
-      <p class="text-sm mb-1">Highway Project</p>
-      <div class="w-full bg-gray-200 h-3 rounded-full">
-        <div class="bg-green-500 h-3 rounded-full w-3/5"></div>
-      </div>
-    </div>
-
-    <div>
-      <p class="text-sm mb-1">Housing Estate</p>
-      <div class="w-full bg-gray-200 h-3 rounded-full">
-        <div class="bg-blue-500 h-3 rounded-full w-2/5"></div>
-      </div>
-    </div>
-
-  </div>
-
-</div> -->
-
 
 <!-- Notifications panel -->
 <!-- <div class="p-6 bg-white rounded-lg shadow">
@@ -323,6 +229,36 @@
 
 </main>
 
+<script>
+    const sideNav = document.getElementById('sideNav');
+    const openSideNav = document.getElementById('openSideNav');
+    const mainWidth = document.getElementById('main-width');
+
+    let isSideNavOpen = true;
+
+    const navOpen = localStorage.getItem('sideNavOpen');
+
+    if (navOpen === 'true') {
+        sideNav.classList.remove('hidden');
+        isSideNavOpen = true;
+    }
+    else {
+         sideNav.classList.add('hidden');
+    }
+
+    openSideNav.addEventListener('click', () => {
+        if (isSideNavOpen) {
+            sideNav.classList.remove('hidden');
+            localStorage.setItem('sideNavOpen', 'open');
+        } else {
+            sideNav.classList.add('hidden');
+            localStorage.setItem('sideNavOpen', 'close');
+        }
+    
+
+        isSideNavOpen = !isSideNavOpen;
+    });
+</script>
 <script src="js/script.js"></script>
 </body>
 </html>

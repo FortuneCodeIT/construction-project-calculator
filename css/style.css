@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box; 
 }
-
 nav ul li {
     padding:0 20px;
 }
@@ -138,12 +137,17 @@ nav ul li {
     background-color: #218488;
     transform: scale(1.05);
 }
-
+.hidden {
+    display: none;
+    
+}
 
 @media (max-width: 768px) {
-  .aside {
-    display: none;
-  }
+    .aside {
+        z-index: 100;
+}
+
+
   .main {
     margin-left: 0;
   }
