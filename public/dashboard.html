@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Dashboard</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 flex">
+    <aside class="bg-gray-900 text-white h-screen max-w-md p-6 md:flex md:flex-col justify-between fixed top-0 left-0 aside sm:hidden ">
+        <div>
+        <h2 class="text-2xl font-bold  mb-6">Cost Dashboard</h2>
+        <nav>
+            <ul class="space-y-4 text-lg">
+                <li class="active: bg-blue-700 py-2 rounded-lg"><a href="/public/dashboard.html" >Overview</a></li>
+                <li><a href="/public/projects.html">Projects</a></li>
+                <li><a href="/materials">Cost Tracking</a></li>
+                <li><a href="/expenses">Reports</a></li>
+            </ul>
+        </nav>
+        </div>
+
+        <div class="px-6 py-4 bg-gray-800 rounded-lg flex items-center space-x-1">
+
+            <div class="flex items-center space-x-1">
+            <img src="/assets/img/setting.png" alt="" class="w-6 h-6">
+            <a href="" class="pr-1">setting</a> 
+            </div> /
+
+            <div class="flex items-center space-x-1">
+            <img src="/assets/img/profile.png" alt="" class="w-5 h-5">
+            <a href="">Profile</a>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:ml-64 sm:ml-0 main relative">
+        <header class="flex items-center justify-between sticky top-0 bg-white px-6 py-4 shadow-md z-10 rounded-lg ">
+        
+             <button class="bg-orange-600 px-4 py-2 rounded-lg hover:bg-orange-700 transform hover:scale-105 transition text-white text-sm" id="btn-modal">
+                    Add Expenses
+                </button>
+
+                  <h1 class="text-2xl font-bold">Dashboard</h1>
+
+
+            <div class="flex items-center space-x-2">
+                <p><a href="/notifications" class="text-blue-700 hover:underline font-semibold">Notification</a></p>
+                <img src="/assets/img/profile.png" alt="" class="w-6 h-6 cursor-pointer">
+            </div>
+        </header>
+
+        <div class="form-container z-20" id="modal">
+          
+        <div class=" form" >
+            <form action="" id="myForm">
+
+                <div class="flex items-center justify-between mb-2">
+                  <div id="msg"></div>
+                  <img src="/assets/img/close.png" alt="" class="w-6 h-6 cursor-pointer" id="closeModal">
+                </div>
+<!-- 
+                <input type="number" name="" id="budgetInput" placeholder="Enter Total Budget"> <br> -->
+                <select name="" class="text-black" id="projectSelect"></select> <br>
+
+                <select name="categories" id="category" aria-placeholder="categories">
+                    <option value="">Select Category</option>
+                    <option value="materials">Materials</option>
+                    <option value="labour">Labour</option>
+                    <option value="equipment">Equipment</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="miscellaneous">Miscellaneous</option>
+                </select> <br>
+
+                <input type="number" name="" id="amountInput" placeholder="Amount ₦"> <br>
+
+                <input type="date" name="" id="dateInput" placeholder="Date" > <br>
+                
+                <textarea name="note" id="noteInput" placeholder="Note"></textarea> <br>
+
+                <button id="add-btn">Add</button>
+                    
+            </form>
+            </div>
+        </div>
+        
+        <section>
+            <div class="grid grid-cols md:grid-cols-2 lg:grid-cols-4 mt-6 gap-6">
+                
+
+                <div class="bg-white px-6 py-4 rounded-lg shadow-md">
+                    <h2 class="text-sm font-bold mb-2">Total Budget</h2>
+                    <span class="text-3xl font-bold " id="totalBudget"></span>
+                </div>
+                <div class="bg-white px-6 py-4 rounded-lg shadow-md">
+                    <h2 class="text-sm font-bold mb-2">Amount Spent</h2>
+                    <span class="text-3xl font-bold " id="totalSpent"></span>
+                </div>
+                <div class="bg-white px-6 py-4 rounded-lg shadow-md">
+                    <h2 class="text-sm font-bold mb-2">Remaining Budget</h2>
+                    <span class="text-3xl font-bold " id="remainingBudget"></span>
+                </div>
+                <div class="bg-white px-6 py-4 rounded-lg shadow-md">
+                    <h2 class="text-sm font-bold mb-2">Active Expenses</h2>
+                    <span class="text-3xl font-bold " id="expenseCount"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols md:grid-cols-3 gap-6 mt-6">
+
+            <div class="bg-white px-6 py-4 rounded-lg shadow-md mt-6" >
+                <h2 class="text-sm font-bold mb-2">Monthly spending Trends</h2>
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="bg-white px-6 py-4 rounded-lg shadow-md mt-6" >
+                <h2 class="text-sm font-bold mb-2">Project Cost Comparison</h2>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="bg-white px-6 py-4 rounded-lg shadow-md mt-6" >
+                <h2 class="text-sm font-bold mb-2">Budget Allocation</h2>
+                <canvas id="pieChart"></canvas>
+            </div>
+
+        </section>
+
+        <section class="bg-white px-6 pt-2 pb-6  rounded-lg shadow-md mt-6">
+            <h1 class="text-2xl font-bold mb-6 ">Budget Breakdown</h1>
+            <div class="grid grid-cols md:grid-cols-3 lg:grid-cols-4 gap-6 mt-2">
+
+            <div class="bg-white px-6 py-4 shadow-md rounded-lg">
+                <h2  class="text-lg font-bold mb-2">Materials</h2>
+                <span class="text-3xl font-bold" id="materialsAmount"></span> 
+                (<span class="text-3xl font-bold" id="materialsPercent"></span>%)
+            </div>
+            <div class="bg-white px-6 py-4 shadow-md rounded-lg">
+                <h2  class="text-lg font-bold mb-2">Labour</h2>
+                <span class="text-3xl font-bold " id="labourAmount"></span>
+                (<span class="text-3xl font-bold"  id="labourPercent"></span>%)
+            </div>
+            <div class="bg-white px-6 py-4 shadow-md rounded-lg">
+                <h2  class="text-lg font-bold mb-2">Equipment</h2>
+                <span class="text-3xl font-bold " id="equipmentAmount"></span>
+                (<span class="text-3xl font-bold" id="equipmentPercent"></span>%)
+            </div>
+            <div class="bg-white px-6 py-4 shadow-md rounded-lg">
+                <h2  class="text-lg font-bold mb-2">Transportation</h2>
+                <span class="text-3xl font-bold " id="transportationAmount"></span>
+                (<span class="text-3xl font-bold" id="transportationPercent"></span>%)
+            </div>
+            <div class="bg-white px-6 py-4 shadow-md rounded-lg">
+                <h2  class="text-lg font-bold mb-2">Miscellaneous</h2>
+                <span class="text-3xl font-bold " id="miscellaneousAmount"></span>
+                (<span class="text-3xl font-bold" id="miscellaneousPercent"></span>%)
+            </div>
+
+            </div>
+        </section>
+
+            <section >
+                <div class="bg-white px-6 py-4 rounded-lg shadow-md mt-6">
+                    <h2 class="text-lg font-bold mb-4">Recent Expenses</h2>
+                    <table class="w-full text-left overflow-scroll" >
+                        <thead>
+                            <tr>
+                                <th class="border-b py-2">
+                                    <span >Project</span>
+                                </th>
+                                <th class="border-b py-2">
+                                    <span>Category</span>
+                                </th>
+                                <th class="border-b py-2">
+                                    <span >Amount</span>
+                                </th>
+                                <th class="border-b py-2">
+                                    <span>Date</span>
+                                </th>
+                                <th class="border-b py-2">
+                                    <span>Status</span>
+                                </th>
+                                <th class="border-b py-2">
+                                    <span></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTable">
+                            <!-- <tr>
+                                <td class="border-b py-2">2024-06-01</td>
+                                <td class="border-b py-2">Cement Purchase</td>
+                                <td class="border-b py-2">Materials</td>
+                                <td class="border-b py-2">$500</td>
+                                <td class="border-b py-2">Pending</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b py-2">2024-06-02</td>
+                                <td class="border-b py-2">Labor Payment</td>
+                                <td class="border-b py-2">Labor</td>
+                                <td class="border-b py-2">$1,000</td>
+                                <td class="border-b py-2">Approved</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b py-2">2024-06-03</td>
+                                <td class="border-b py-2">Equipment Rental</td>
+                                <td class="border-b py-2">Equipment</td>
+                                <td class="border-b py-2">$300</td>
+                                <td class="border-b py-2">Rejected</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b py-2">2024-06-04</td>
+                                <td class="border-b py-2">Paint Purchase</td>
+                                <td class="border-b py-2">Materials</td>
+                                <td class="border-b py-2">$200</td>
+                                <td class="border-b py-2">Pending</td>
+                            </tr>
+                            <tr>
+                                <td class="border-b py-2">2024-06-05</td>
+                                <td class="border-b py-2">Plumbing Work</td>
+                                <td class="border-b py-2">Labor</td>
+                                <td class="border-b py-2">$800</td>
+                                <td class="border-b py-2">Approved</td>
+                        </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+
+            <!-- <div class="p-6">
+  <div class="bg-white p-6 rounded-lg shadow">
+
+    <h2 class="text-lg font-semibold mb-4">
+      Budget vs Actual Cost
+    </h2>
+
+    <div class="space-y-4">
+
+ 
+      <div>
+        <div class="flex justify-between text-sm mb-1">
+          <span>Road Construction</span>
+          <span>₦6,000,000 / ₦10,000,000</span>
+        </div>
+
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-blue-600 h-3 rounded-full w-3/5"></div>
+        </div>
+      </div>
+
+  
+      <div>
+        <div class="flex justify-between text-sm mb-1">
+          <span>Bridge Project</span>
+          <span>₦12,000,000 / ₦15,000,000</span>
+        </div>
+
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-green-600 h-3 rounded-full w-3/4"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div> -->
+
+            <!-- <div class="p-6 bg-white rounded-lg shadow">
+
+  <h2 class="text-lg font-semibold mb-4">
+    Project Progress
+  </h2>
+
+  <div class="space-y-4">
+
+    <div>
+      <p class="text-sm mb-1">Highway Project</p>
+      <div class="w-full bg-gray-200 h-3 rounded-full">
+        <div class="bg-green-500 h-3 rounded-full w-3/5"></div>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-sm mb-1">Housing Estate</p>
+      <div class="w-full bg-gray-200 h-3 rounded-full">
+        <div class="bg-blue-500 h-3 rounded-full w-2/5"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div> -->
+
+
+<!-- Notifications panel -->
+<!-- <div class="p-6 bg-white rounded-lg shadow">
+    
+
+  <h2 class="text-lg font-semibold mb-4">
+    Notifications
+  </h2>
+
+  <ul class="space-y-2 text-sm">
+
+    <li class="text-red-500">
+      ⚠ Bridge Project exceeded budget
+    </li>
+
+    <li class="text-blue-500">
+      New expense added to Road Construction
+    </li>
+
+    <li class="text-green-600">
+      Housing Estate project updated
+    </li>
+
+  </ul>
+
+</div>
+    -->
+
+
+</main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

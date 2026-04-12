@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Construction Project Website</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="bg-white flex justify-between items-center py-4 px-10 shadow-md z-10 sticky top-0">
+        <div class="font-bold logo ">
+            <img src="" alt="">
+            <h1>My Website</h1>
+        </div>
+
+        <nav >
+            <ul class="flex px-4 text-sm">
+                <li><a href="/">Home</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/calculator">Calculator</a></li>
+                <li><a href="/public/dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+
+        <div class="btn">
+            <a href="/dasboard">
+            <button>Get Started</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="flex flex-col items-center justify-center w-full hero-section ">
+
+        <h1>Track Your Construction Project Cost Easily</h1>
+        <p>
+            Estimate materials, manage expenses, and track project budget in one dashboard.
+        </p>
+
+         <div class=" mt-7" >
+            <a href="/dasboard">
+            <button class="bg-blue-500 hover:bg-blue-600 transform hover:scale-105 transition text-white text-center font-semibold py-4 px-8  rounded-lg">
+                Start Free Project
+            </button>
+            </a>
+        </div>
+    </section>
+    
+    <section class="bg-gray-100 py-16">
+        <div class=" max-w-6xl mx-auto px-6">
+
+            <h1 class="text-3xl text-center mb-4 font-bold">
+                Powerful Features
+            </h1>
+
+            <p class="text-center text-gray-600 mb-12"> 
+                Everthing you need to manage your construction project cost effectively
+            </p>
+
+            <!-- this is for the feature cards grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- this are the feature cards -->
+                <div class="feature-card p-6 bg-white rounded-lg shadow-md">
+
+                    <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/material.png" alt="" class="w-8 h-8">
+                    <h2 class="text-lg font-bold mb-2 text-center">
+                        Material Calculator
+                    </h2>
+                    </div>
+
+                    <p class="text-gray-600">Accurately estimate material quantities and costs for your construction project.</p>
+                </div>
+
+                <div class="feature-card p-6 bg-white rounded-lg shadow-md">
+
+                     <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/expenses.png" alt="" class="w-8 h-8">
+                    <h2 class="text-lg font-bold mb-2 text-center">Expense Tracking</h2>
+                    </div>
+
+                    <p class="text-gray-600">Track construction expenses and monitor your project budget.</p>
+                </div>
+
+                <div class="feature-card p-6 bg-white rounded-lg shadow-md">
+
+                     <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/cost.png" alt="" class="w-8 h-8">
+                    <h2 class="text-lg font-bold mb-2 text-center">Cost Estimator</h2>
+                    </div>
+    
+                    <p class="text-gray-600">Calculate total construction costs based on current material prices.</p>
+                </div>
+
+                <div class="feature-card p-6 bg-white rounded-lg shadow-md">
+
+                     <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/material.png" alt="" class="w-8 h-8">
+                    <h2 class="text-lg font-bold mb-2 text-center">Project Dashboard</h2>
+                    </div>
+
+                    <p class="text-gray-600">View project progress, spending, and cost summaries in one place.</p>
+                </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-16">
+         <div class=" max-w-6xl mx-auto px-6">
+
+            <h1 class="text-3xl text-center mb-4 font-bold">How It Works</h1>
+
+            <p class="text-center text-gray-600 mb-12">Start managing construction costs in three simple steps.</p>
+
+            <!-- steps grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
+
+                <!-- steps cards -->
+                 <div>
+                 <h2 class="mb-2 font-semibold">Step 1</h2>
+                <div class="bg-white rounded-lg shadow-md p-6">
+
+                    <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/folder.png" alt="" class="w-8 h-8">
+                        <h2 class="text-lg font-bold mb-2">Create a Project</h2>
+                    </div>
+
+                    <p class="text-gray-600 ">Start by creating a new construction project and setting your budget.</p>
+                </div>
+                </div>
+
+
+                <div>
+                 <h2 class="mb-2 font-semibold">Step 2</h2>
+                <div class="bg-white rounded-lg shadow-md p-6">
+
+                    <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/material.png" alt="" class="w-8 h-8">
+                        <h2 class="text-lg font-bold mb-2">Estimate Materials</h2>
+                    </div>
+
+                    <p class="text-gray-600 ">Use the material calculator to estimate blocks, cement, and sand.</p>
+                </div>
+                </div>
+
+
+                <div>
+                 <h2 class="mb-2 font-semibold">Step 3</h2>
+                <div class="bg-white rounded-lg shadow-md p-6">
+
+                    <div class="flex flex-col items-center justify-center mb-4">
+                        <img src="/assets/img/expenses.png" alt="" class="w-8 h-8">
+                        <h2 class="text-lg font-bold mb-2">Track Expenses</h2>
+                    </div>
+
+                    <p class="text-gray-600 ">Record expenses and monitor your remaining project budget</p>
+                </div>
+                </div>
+
+
+
+            </div>
+         </div>
+
+    </section>
+
+    <section class="bg-slate-900 text-center py-20 text-white mx-auto">
+
+        <h1 class="text-3xl font-bold mb-2">Start Managing Your Construction Project Today</h1>
+
+        <p class="text-gray-600">Track expenses, estimate materials, and stay on budget with ease</p>
+
+        <button class="bg-orange-500  hover:bg-orange-600 transform hover:scale-105 transition text-white px-8 py-4 rounded-lg font-semibold mt-4">
+           Create Your First Project
+        </button>
+
+    </section>
+
+    <footer class="bg-slate-950 text-gray-300 py-4 px-6">
+        <div class="flex flex-col md:flex-row  items-center justify-between">
+
+             <div class="font-bold logo ">
+            <img src="" alt="">
+            <h1>My Website</h1>
+        </div>
+
+        <nav class="mt-4 md:mt-0 ">
+            <ul class="flex  space-x-2 text-sm ">
+                <li><a href="/features">Features</a></li>
+                <li><a href="/calculator">Calculator</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </nav>
+
+            <p class="text-xs mt-4 md:mt-0">&copy; 2026 My Website. All rights reserved.</p>   
+        </div>
+    </footer>
+</body>
+</html>
