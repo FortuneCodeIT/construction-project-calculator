@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100 flex">
 
-       <aside class="bg-gray-900 text-white h-screen w-1/5 p-6 md:flex md:flex-col justify-between fixed top-0 left-0 aside sm:hidden ">
+        <aside class="bg-gray-900 text-white h-screen sm:w-2/6 md:w-1/5 p-6 md:flex md:flex-col justify-between fixed top-0 left-0 aside  hidden " id="sideNav">
         
         <div>
         <h2 class="text-2xl font-bold  mb-6">Cost Dashboard</h2>
@@ -37,7 +37,7 @@
         </div>
     </aside>
 
-    <main class="flex-1 p-6 w-4/5 right-0 main absolute">
+ <main class=" p-6 w-full md:w-4/5  right-0 main absolute" id="main-width">
     <div id="projectPage" class="">
         <header class="flex items-center justify-between bg-white px-6 py-4 shadow-md rounded-lg">
               
@@ -72,7 +72,13 @@
             <div class="flex items-center space-x-2">
                 <p><a href="/notifications" class="text-blue-700 hover:underline font-semibold">Notification</a></p>
                 <img src="img/profile.png" alt="" class="w-6 h-6 cursor-pointer">
+
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="openSideNav" style="cursor: pointer;" class="md:hidden">
+                <path fill="none" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14" />
+                </svg>
             </div>
+
         </header>
 
             <div class="grid grid-cols md:grid-cols-4 gap-6 mt-6" id="projectCardContainer"> </div>
@@ -80,33 +86,36 @@
     
     </div>
     </main>
+<script>
+    const sideNav = document.getElementById('sideNav');
+    const openSideNav = document.getElementById('openSideNav');
+    const mainWidth = document.getElementById('main-width');
 
-    <script>
-//     const projectNameInput = document.getElementById("projectNameInput");
-// const projectBudgetInput = document.getElementById("projectBudgetInput");
-// const projectAddBtn = document.getElementById("projectAddBtn");
-// const projectForm = document.getElementById("projectForm");
+    let isSideNavOpen = true;
 
-// projectForm.addEventListener("submit", (e) => {
-//     e.preventDefault();
+    const navOpen = localStorage.getItem('sideNavOpen');
 
-//     if (projectNameInput.value === "" || projectBudgetInput.value === "" ) {
-//         msg.innerHTML = "Please input all field"
-//         msg.style.color = "red"
-//         return;
-//     }
-//     else if (Number(projectBudgetInput.value) < 5000) {
-//         msg.innerHTML = "Budget must be 5000 and Above"
-//         msg.style.color = "red"
-//         return;
-//     }
-//     else {
-//         msg.innerHTML = "Project Added Successfully"
-//         msg.style.color = "green"
+    if (navOpen === 'true') {
+        sideNav.classList.remove('hidden');
+        isSideNavOpen = true;
+    }
+    else {
+         sideNav.classList.add('hidden');
+    }
 
-//     }
-// });
-    </script>
+    openSideNav.addEventListener('click', () => {
+        if (isSideNavOpen) {
+            sideNav.classList.remove('hidden');
+            localStorage.setItem('sideNavOpen', 'open');
+        } else {
+            sideNav.classList.add('hidden');
+            localStorage.setItem('sideNavOpen', 'close');
+        }
+    
+
+        isSideNavOpen = !isSideNavOpen;
+    });
+</script>
 
 <script src="js/script.js"></script>
 </body>
