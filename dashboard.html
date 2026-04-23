@@ -38,35 +38,14 @@
     </aside>
 
     <main class=" py-4 px-2 w-full md:w-4/5  right-0 main absolute" id="main-width">
-        <header class="flex items-center justify-between sticky top-0 bg-white px-6 py-4 shadow-md z-10 rounded-lg ">  
+        <header class="flex items-center justify-between sticky top-0 bg-white px-6 py-4 shadow-md z-10 rounded-lg relative">  
 
-                <button class="bg-orange-600 px-4 py-2 rounded-lg hover:bg-orange-700 transform hover:scale-105 transition text-white text-sm" id="btn-modal">
+                <button class="  bg-orange-600 px-4 py-2 rounded-lg hover:bg-orange-700 transform hover:scale-105 transition text-white text-sm" id="btn-modal">
                     Add Expenses
                 </button>
 
-
-                  <h1 class="text-2xl font-bold">Dashboard</h1>
-
-
-            <div class="flex items-center space-x-2">
-                <p><a href="/notifications" class="text-blue-700 hover:underline font-semibold">Notification</a></p>
-                <img src="img/profile.png" alt="" class="w-6 h-6 cursor-pointer">
-
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="openSideNav" style="cursor: pointer;" class="md:hidden">
-                <path fill="none" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14" />
-                </svg> -->
-
-                <button id="openSideNav" class="md:hidden custom-toggler">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </header>
-
-        <div class="form-container z-20" id="modal">
-          
-        <div class=" form" >
+        <div class="form-container z-20 absolute mt-80 w-full left-1/2 transform -translate-x-1/2 -translate-y-1/2" id="modal">
+            <div class=" form" >
             <form action="" id="myForm">
 
                 <div class="flex items-center justify-between mb-2">
@@ -98,6 +77,28 @@
             </div>
         </div>
         
+
+
+                  <h1 class="text-2xl font-bold">Dashboard</h1>
+
+
+            <div class="flex items-center space-x-2">
+                <p><a href="/notifications" class="text-blue-700 hover:underline font-semibold">Notification</a></p>
+                <img src="img/profile.png" alt="" class="w-6 h-6 cursor-pointer">
+
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="openSideNav" style="cursor: pointer;" class="md:hidden">
+                <path fill="none" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14" />
+                </svg> -->
+
+                <button id="openSideNav" class="md:hidden custom-toggler">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </header>
+
+ 
         <section>
             <div class="grid grid-cols md:grid-cols-2 lg:grid-cols-4 mt-6 gap-6">
                 
