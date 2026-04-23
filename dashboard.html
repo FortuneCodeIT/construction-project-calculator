@@ -52,9 +52,15 @@
                 <p><a href="/notifications" class="text-blue-700 hover:underline font-semibold">Notification</a></p>
                 <img src="img/profile.png" alt="" class="w-6 h-6 cursor-pointer">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="openSideNav" style="cursor: pointer;" class="md:hidden">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="openSideNav" style="cursor: pointer;" class="md:hidden">
                 <path fill="none" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14" />
-                </svg>
+                </svg> -->
+
+                <button id="openSideNav" class="md:hidden custom-toggler">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </header>
 
@@ -229,7 +235,7 @@
 
 </main>
 
-<script>
+<!-- <script>
     const sideNav = document.getElementById('sideNav');
     const openSideNav = document.getElementById('openSideNav');
     const mainWidth = document.getElementById('main-width');
@@ -240,24 +246,45 @@
 
     if (navOpen === 'true') {
         sideNav.classList.remove('hidden');
+        openSideNav.classList.add('open');
         isSideNavOpen = true;
     }
     else {
          sideNav.classList.add('hidden');
+        openSideNav.classList.remove('open');
+        isSideNavOpen = false;
     }
 
     openSideNav.addEventListener('click', () => {
-        if (isSideNavOpen) {
+         if (isSideNavOpen) {
             sideNav.classList.remove('hidden');
+            openSideNav.classList.add('open');
             localStorage.setItem('sideNavOpen', 'open');
         } else {
             sideNav.classList.add('hidden');
+            openSideNav.classList.remove('open');
             localStorage.setItem('sideNavOpen', 'close');
         }
     
 
         isSideNavOpen = !isSideNavOpen;
     });
+</script> -->
+
+<script>
+
+    const sideNav = document.getElementById('sideNav');
+    const openSideNav = document.getElementById('openSideNav');
+    const mainWidth = document.getElementById('main-width');
+    
+    const navOpen = localStorage.getItem('sideNavOpen');
+
+openSideNav.addEventListener('click', () => {
+        sideNav.classList.toggle('hidden');
+        openSideNav.classList.toggle('open');
+        localStorage.setItem('sideNavOpen', !isSideNavOpen);
+
+});
 </script>
 <script src="js/script.js"></script>
 </body>
