@@ -23,7 +23,7 @@ nav ul li {
 }
 
 .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/img/construction2.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/construction2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -152,6 +152,7 @@ nav ul li {
   .main {
     margin-left: 0;
   }
+<<<<<<< HEAD
   .custom-toggler {
     border: none;
     background: none;
@@ -176,3 +177,6 @@ nav ul li {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 }
+=======
+}
+>>>>>>> 97947fd15179ead1bf07964e8694d84c7b1bb850
