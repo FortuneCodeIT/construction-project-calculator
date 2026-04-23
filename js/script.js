@@ -20,7 +20,7 @@
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
  
-let projects = JSON.parse(localStorage.getItem("projects")) || [];
+// let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
      renderProjectCards();
     populateProjectDropdown();
     updateDashboard();
+    updateProjectTitle();
 });
 
 
@@ -84,7 +85,7 @@ projectForm.addEventListener("submit", (e) => {
         return;
     }
 
-    // let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
 projects.push(
     {
         // the id is to give every project a unique id even when the names are same it will treat each project as a special project
@@ -214,17 +215,6 @@ projectBudgetInput.addEventListener("change", () => {
     
 });
 
-//this is an input that add total budget
-/*
-const budgetInput = document.getElementById('budgetInput');
-
-   // this for the total Budget input
-budgetInput.addEventListener('change', function() {
-    const budget = Number(budgetInput.value);
-    localStorage.setItem('totalBudget', budget);
-    updateDashboard();
-});
-*/
 
 
 // this is to update the main overview
@@ -521,45 +511,52 @@ function renderProjectCards() {
         </div>
         `;
         projectContainer.appendChild(card);
-
+ 
     
 //this is the delete button for the project card it delete the cards at once
-card.addEventListener("click", (e) => {
-        if (e.target.classList.contains("delete-btn")) {
-             e.stopPropagation();
-      
-            console.log("delete clicked");
+   card.addEventListener("click", (e) => {
 
-            let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    // If delete button is clicked → handle delete only
+    if (e.target.classList.contains("delete-btn")) {
+        e.stopPropagation();
 
-            projects = projects.filter(p => p.id !== project.id);
-            localStorage.setItem("projects", JSON.stringify(projects));
+        let projects = JSON.parse(localStorage.getItem("projects")) || [];
+        projects = projects.filter(p => p.id !== project.id);
+        localStorage.setItem("projects", JSON.stringify(projects));
 
-               let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+        let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+        expenses = expenses.filter(exp => String(exp.projectId) !== String(project.id));
+        localStorage.setItem("expenses", JSON.stringify(expenses));
 
-            expenses = expenses.filter(exp => String(exp.projectId) !== String(project.id));
-            localStorage.setItem("expenses", JSON.stringify(expenses));
+        renderProjectCards();
+        updateDashboard();
+        return;
+    }
 
-            renderProjectCards();
-            updateDashboard();
-            return;
+    // ✅ Single click works immediately
+    localStorage.setItem("selectedProjectId", project.id);
+    localStorage.setItem("selectedProjectName", project.projectName);
+
+    window.location.href = "dashboard.html";
+});
+   });
               }
-           
-//this makes the card clickable
-        card.addEventListener("click", () => {
-            console.log("clicked", project.id);
-        localStorage.setItem("selectedProjectId", project.id);
 
-        console.log("saved:", localStorage.getItem("selectedProjectId"));
+     
 
-        setTimeout(() => {
-        window.location.href = "dashboard.html";}, 200);
 
-    });
+function updateProjectTitle() {
+    const projectTitle = document.getElementById("projectTitle");
 
-        });
+    if (!projectTitle) return;
 
-    });
+    const selectedProjectName = localStorage.getItem("selectedProjectName");
+
+    if (selectedProjectName) {
+        projectTitle.textContent = selectedProjectName;
+    } else {
+        projectTitle.textContent = "Dashboard";
+    }
 }
 
 
