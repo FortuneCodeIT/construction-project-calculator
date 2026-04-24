@@ -20,7 +20,7 @@
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
  
-// let projects = JSON.parse(localStorage.getItem("projects")) || [];
+let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -145,7 +145,7 @@ populateProjectDropdown();
         const categoryInput = document.getElementById('category');
         const noteInput = document.getElementById('noteInput');
         const msg = document.getElementById('msg');
-
+noteInput
 
         myForm.addEventListener("submit", (e) =>  {
             e.preventDefault();
@@ -173,7 +173,7 @@ populateProjectDropdown();
                 category: categoryInput.value.trim(),
                 amount: Number(amountInput.value),
                 date: dateInput.value.trim(),
-                notes: noteInput.value.trim(),
+                // notes: noteInput.value.trim(),
                 status: "Pending"
             });
 
